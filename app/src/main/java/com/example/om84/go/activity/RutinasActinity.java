@@ -56,7 +56,7 @@ public class RutinasActinity extends AppCompatActivity {
 
         try {
             SharedPreferences datos = getSharedPreferences("datos", Context.MODE_PRIVATE);
-            String rutinas = datos.getString("rutinas", "");
+            String rutinas = datos.getString("rutinas", "{\"rutinas\": []}");
 
             JSONObject object = new JSONObject(rutinas);
             JSONArray arrayJson = object.getJSONArray("rutinas");
