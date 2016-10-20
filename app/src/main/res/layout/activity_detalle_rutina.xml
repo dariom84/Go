@@ -43,4 +43,29 @@
         app:elevation="7dp" />
 
 
+    <TextView
+        android:id="@+id/displayChronometer"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="000000000"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_alignTop="@+id/stopRutina"
+        android:layout_toRightOf="@+id/tvDetalleRutina"
+        android:layout_toEndOf="@+id/tvDetalleRutina"
+        android:layout_alignParentBottom="true" />
+
+    <Button
+        android:text="start>"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_media_play"
+        android:id="@+id/startRutina"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
