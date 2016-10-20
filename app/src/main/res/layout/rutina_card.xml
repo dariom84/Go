@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="34dp"
+    android:id="@+id/cvRutina"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgRutina"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/pesas"
+            android:scaleType="center"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvNombreRutina"
+            android:layout_toRightOf="@+id/imgRutina"
+            android:layout_alignParentTop="true"
+            android:textSize="30sp"
+            android:text="Dia 1"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDetalleRutina"
+            android:layout_toRightOf="@+id/imgRutina"
+            android:layout_below="@+id/tvNombreRutina"
+            android:text="Ejercicios: 8"
+            />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
