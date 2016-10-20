@@ -1,6 +1,5 @@
-package com.example.om84.go;
+package com.example.om84.go.adapter;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.om84.go.activity.DetalleActivity;
+import com.example.om84.go.R;
+import com.example.om84.go.domain.Rutina;
 
 import java.util.List;
 
@@ -35,7 +38,7 @@ public class RutinaAdapter extends RecyclerView.Adapter<RutinaAdapter.RutinaView
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), DetalleRutina.class);
+                    Intent intent = new Intent(v.getContext(), DetalleActivity.class);
                     intent.putExtra("nombreRutina", nombre.getText().toString());
                     intent.putExtra("detalleRutina", detalle.getText().toString());
                     v.getContext().startActivity(intent);

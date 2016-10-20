@@ -1,4 +1,4 @@
-package com.example.om84.go;
+package com.example.om84.go.domain;
 
 /**
  * Created by dmolina on 09/10/2016.

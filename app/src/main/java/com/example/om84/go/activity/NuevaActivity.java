@@ -1,4 +1,4 @@
-package com.example.om84.go;
+package com.example.om84.go.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,10 +11,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.content.Context;
 
+import com.example.om84.go.R;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class NuevaRutina extends AppCompatActivity {
+public class NuevaActivity extends AppCompatActivity {
 
     private static final String TAG = "Debug";
 
@@ -84,7 +86,7 @@ public class NuevaRutina extends AppCompatActivity {
             editor.putString("rutinas", strJsonRutinas);
             editor.commit();
 
-            Intent aRutina = new Intent(NuevaRutina. this,Rutinas.class);
+            Intent aRutina = new Intent(NuevaActivity. this,RutinasActinity.class);
             startActivity(aRutina);
 
         } catch (Exception e) {

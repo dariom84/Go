@@ -1,4 +1,4 @@
-package com.example.om84.go;
+package com.example.om84.go.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,13 +11,18 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.om84.go.R;
+import com.example.om84.go.adapter.RutinaAdapter;
+import com.example.om84.go.domain.Rutina;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Rutinas extends AppCompatActivity {
+public class RutinasActinity extends AppCompatActivity {
     private RecyclerView recycler;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager lManager;
@@ -88,7 +93,7 @@ public class Rutinas extends AppCompatActivity {
     }
 
     public void agregarRutina(){
-        Intent aRutina = new Intent(Rutinas.this,NuevaRutina.class);
+        Intent aRutina = new Intent(RutinasActinity.this,NuevaActivity.class);
         startActivity(aRutina);
     }
 }
