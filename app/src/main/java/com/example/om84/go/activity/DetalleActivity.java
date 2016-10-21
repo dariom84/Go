@@ -33,13 +33,23 @@ public class DetalleActivity extends AppCompatActivity {
 
     private Context context;
     private List<Ejercicio> ejerciciosList;
+    private SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_rutina);
-
         context = this;
+
+        final Button start = (Button) findViewById(R.id.startRutina);
+        focus = new Chronometer (DetalleActivity.this);
+        final TextView chronometer = (TextView) findViewById(R.id.displayChronometer);
+        start.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                focus.start();
+                chronometer.setText(focus.getText());
+            }
+        });
 
         // Obtener el Recycler
         recycler = (RecyclerView) findViewById(R.id.tvDetalleEjercicio);
@@ -48,11 +58,10 @@ public class DetalleActivity extends AppCompatActivity {
         lManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(lManager);
 
-        SharedPreferences sharedpreferences = getSharedPreferences(DetalleActivity.MY_PREFERENCES, Context.MODE_PRIVATE);
-        Set<String> ejercicios =  sharedpreferences.getStringSet("exerciseLists", new HashSet<String>());
+        this.sharedpreferences = getSharedPreferences(DetalleActivity.MY_PREFERENCES, Context.MODE_PRIVATE);
+        Set<String> ejercicios =  this.sharedpreferences.getStringSet("exerciseLists", new HashSet<String>());
+
         ejerciciosList = new ArrayList<Ejercicio>();
-
-
         for(String s: ejercicios){
             String fields[] = s.split("<->");
             ejerciciosList.add(new Ejercicio(0, fields[0], fields[1], fields[2], fields[3]));
@@ -61,13 +70,6 @@ public class DetalleActivity extends AppCompatActivity {
         // Crear un nuevo adaptador
         adapter = new EjercicioAdapter(ejerciciosList);
         recycler.setAdapter(adapter);
-
-        TextView tvNombreRutina = (TextView) findViewById(R.id.tvNombreRutina);
-        TextView tvDetalleRutina = (TextView) findViewById(R.id.tvDetalleRutina);
-
-        Bundle parametros = getIntent().getExtras();
-
-
 
         FloatingActionButton addJokeButton = (FloatingActionButton) findViewById(R.id.fabAgregarEjercicio);
         assert addJokeButton != null;
@@ -89,18 +91,15 @@ public class DetalleActivity extends AppCompatActivity {
                 String ejercicio = data.getStringExtra("ejercicio");
                 String fields[] = ejercicio.split("<->");
                 ejerciciosList.add(new Ejercicio(0, fields[0], fields[1], fields[2], fields[3]));
+
+                Set<String> ejercicios =  this.sharedpreferences.getStringSet("exerciseLists", new HashSet<String>());
+                ejercicios.add(ejercicio);
+
+                SharedPreferences.Editor editor = this.sharedpreferences.edit();
+                editor.putStringSet("exerciseLists", ejercicios);
+                editor.commit();
             }
         }
-
-        final Button start = (Button) findViewById(R.id.startRutina);
-        focus = new Chronometer (DetalleActivity.this);
-        final TextView chronometer = (TextView) findViewById(R.id.displayChronometer);
-        start.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                focus.start();
-                chronometer.setText(focus.getText());
-            }
-        });
     }
 
 }

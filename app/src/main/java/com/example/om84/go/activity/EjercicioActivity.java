@@ -1,6 +1,8 @@
 package com.example.om84.go.activity;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,14 +32,11 @@ public class EjercicioActivity extends AppCompatActivity {
         createExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sharedpreferences = getSharedPreferences(DetalleActivity.MY_PREFERENCES, Context.MODE_PRIVATE);
-                Set<String> ejercicios =  sharedpreferences.getStringSet("exerciseLists", new HashSet<String>());
-
-                ejercicios.add(new String(title.getText().toString()+"<->"+duration.getText().toString()+"<->"+ repeat.getText().toString()+"<->"+ interval.getText().toString()));
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putStringSet("exerciseLists", ejercicios);
-                editor.commit();
-
+                String ejercioCreado = new String(title.getText().toString()+"<->"+duration.getText().toString()+"<->"+ repeat.getText().toString()+"<->"+ interval.getText().toString());
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("ejercicio",ejercioCreado);
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
             }
         });
 
