@@ -3,7 +3,7 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:layout_marginTop="34dp"
-    android:id="@+id/cvRutina"
+    android:id="@+id/cvEjercicio"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
@@ -26,20 +26,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvNombreRutina"
+            android:id="@+id/tvNombreEjercicio"
             android:layout_toRightOf="@+id/imgEjercicio"
             android:layout_alignParentTop="true"
             android:textSize="30sp"
             android:text="Dia 1"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvDetalleRutina"
-            android:layout_toRightOf="@+id/imgEjercicio"
-            android:layout_below="@+id/tvNombreRutina"
-            android:text="Ejercicios: 8"
             />
 
     </RelativeLayout>

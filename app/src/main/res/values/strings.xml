@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Go</string>
+    <string name="title_input">Ingrese Titulo</string>
+    <string name="duration_input">Ingrese Duracion</string>
+    <string name="repeat_input">Ingrese Repeticiones</string>
+    <string name="repeat_interval">Ingrese Intervalo</string>
+    <string name="create_excercise">Crear Ejercicio</string>
 </resources>

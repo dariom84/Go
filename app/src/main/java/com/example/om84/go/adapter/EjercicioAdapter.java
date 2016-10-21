@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.om84.go.activity.DetalleActivity;
 import com.example.om84.go.R;
-import com.example.om84.go.domain.Rutina;
+import com.example.om84.go.activity.DetalleActivity;
+import com.example.om84.go.domain.Ejercicio;
 
 import java.util.List;
 
@@ -18,36 +18,33 @@ import java.util.List;
  * Created by dmolina on 09/10/2016.
  */
 
-public class RutinaAdapter extends RecyclerView.Adapter<RutinaAdapter.RutinaViewHolder> {
-    private List<Rutina> items;
+public class EjercicioAdapter extends RecyclerView.Adapter<EjercicioAdapter.EjercicioViewHolder> {
+    private List<Ejercicio> items;
 
-    public static class RutinaViewHolder extends RecyclerView.ViewHolder {
+    public static class EjercicioViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
         public View view;
         public ImageView imagen;
         public TextView nombre;
-        public TextView detalle;
 
-        public RutinaViewHolder(View v) {
+        public EjercicioViewHolder(View v) {
             super(v);
             view = v;
 
             imagen = (ImageView) v.findViewById(R.id.imgEjercicio);
-            nombre = (TextView) v.findViewById(R.id.tvNombreRutina);
-            detalle = (TextView) v.findViewById(R.id.tvDetalleRutina);
+            nombre = (TextView) v.findViewById(R.id.tvNombreEjercicio);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), DetalleActivity.class);
-                    intent.putExtra("nombreRutina", nombre.getText().toString());
-                    intent.putExtra("detalleRutina", detalle.getText().toString());
+                    intent.putExtra("nombreEjercicio", nombre.getText().toString());
                     v.getContext().startActivity(intent);
                 }
             });
         }
     }
 
-    public RutinaAdapter(List<Rutina> items) {
+    public EjercicioAdapter(List<Ejercicio> items) {
         this.items = items;
     }
 
@@ -57,16 +54,15 @@ public class RutinaAdapter extends RecyclerView.Adapter<RutinaAdapter.RutinaView
     }
 
     @Override
-    public RutinaViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public EjercicioViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.rutina_card, viewGroup, false);
-        return new RutinaViewHolder(v);
+                .inflate(R.layout.ejercicio_card, viewGroup, false);
+        return new EjercicioViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(RutinaViewHolder viewHolder, int i) {
+    public void onBindViewHolder(EjercicioViewHolder viewHolder, int i) {
         viewHolder.imagen.setImageResource(items.get(i).getImagen());
         viewHolder.nombre.setText(items.get(i).getNombre());
-        viewHolder.detalle.setText("Ejercicios:"+String.valueOf(items.get(i).getDetalle()));
     }
 }

@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.NuevaActivity" />
-        <activity android:name=".activity.DetalleActivity"></activity>
+        <activity android:name=".activity.DetalleActivity" />
+        <activity android:name=".activity.EjercicioActivity"></activity>
     </application>
 
 </manifest>
