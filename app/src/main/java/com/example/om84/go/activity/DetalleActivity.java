@@ -3,17 +3,18 @@ package com.example.om84.go.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
 
 import com.example.om84.go.R;
 import com.example.om84.go.adapter.EjercicioAdapter;
-import com.example.om84.go.adapter.RutinaAdapter;
 import com.example.om84.go.domain.Ejercicio;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 public class DetalleActivity extends AppCompatActivity {
+    Chronometer focus;
 
     public static final String MY_PREFERENCES = "GO_PREFERENCE" ;
     public static final int CREAR_EJERCICIO = 1;
@@ -66,6 +68,7 @@ public class DetalleActivity extends AppCompatActivity {
         Bundle parametros = getIntent().getExtras();
 
 
+
         FloatingActionButton addJokeButton = (FloatingActionButton) findViewById(R.id.fabAgregarEjercicio);
         assert addJokeButton != null;
         addJokeButton.setOnClickListener(new View.OnClickListener() {
@@ -88,5 +91,16 @@ public class DetalleActivity extends AppCompatActivity {
                 ejerciciosList.add(new Ejercicio(0, fields[0], fields[1], fields[2], fields[3]));
             }
         }
+
+        final Button start = (Button) findViewById(R.id.startRutina);
+        focus = new Chronometer (DetalleActivity.this);
+        final TextView chronometer = (TextView) findViewById(R.id.displayChronometer);
+        start.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                focus.start();
+                chronometer.setText(focus.getText());
+            }
+        });
     }
+
 }
